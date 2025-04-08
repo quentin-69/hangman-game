@@ -94,3 +94,27 @@ restartButton.addEventListener('click', startGame);
 submitButton.addEventListener('click', handleGuess);
 
 loadWords();
+
+// Funktion zum Abrufen der Schweizer Zeit und Anzeige im Format HH:MM:SS
+function updateSwissTime() {
+    // Optionen für die Anzeige der Uhrzeit
+    const options = { 
+        timeZone: 'Europe/Zurich',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+    };
+
+    // Aktuelle Zeit in der Schweiz holen
+    const swissTime = new Date().toLocaleTimeString('de-CH', options);
+
+    // Die Uhrzeit im HTML-Element anzeigen
+    document.getElementById('current-time').textContent = swissTime;
+}
+
+// Die Zeit jede Sekunde aktualisieren
+setInterval(updateSwissTime, 1000);
+
+// Beim Laden der Seite die Zeit sofort anzeigen
+updateSwissTime();

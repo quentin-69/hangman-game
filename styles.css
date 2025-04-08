@@ -373,3 +373,33 @@ button:hover {
 #win-loose-count p {
     margin: 0; /* Entfernt den Standardabstand zwischen den <p> Tags */
 }
+
+/* Container für die Uhr */
+#clock-container {
+    position: fixed;  /* Fixiert die Uhr an der oberen Seite */
+    top: 20px;        /* 20px Abstand von oben */
+    left: 50%;        /* Positioniert die Uhr horizontal in der Mitte */
+    transform: translateX(-50%);  /* Kompensiert die Breite des Containers für perfekte Zentrierung */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.swiss-time-label {
+    font-size: 1em;  /* Etwas kleinere Schriftgröße */
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #ffffff;
+}
+
+.current-time {
+    font-size: 2em; /* Kleinere Schriftgröße als vorher */
+    color: #ffffff;
+    font-family: 'Courier New', Courier, monospace; /* Monospaced Schriftart für den digitalen Look */
+    letter-spacing: 2px;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.6); /* Halbtransparenter Hintergrund */
+    border-radius: 10px;
+}
