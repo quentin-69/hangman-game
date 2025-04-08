@@ -8,6 +8,16 @@
 </head>
 <body>
     <div class="game-container">
+        <div id="score-display">
+            <p id="total-points" class="score-text">HMP: 0</p>
+            
+            <div id="win-loose-count">
+                <p id="win-count" class="score-text">0</p>
+                <p>/</p>
+                <p id="loss-count" class="score-text">0</p>
+            </div>
+
+        </div>
         <h1>Hangman - Game</h1>
         
         <div id="word-display" class="word-display">_ _ _ _ _</div>
@@ -19,16 +29,13 @@
         </div>
 
         <div id="wrong-guesses" class="wrong-guesses">Falsche Buchstaben: </div>
-        
 
-        
         <div id="hangman-drawing" class="hangman-drawing">
         </div>
 
         <div id="message" class="message"></div>
         <button id="restart" class="restart-btn">Neustart</button>
     </div>
-
 
     <script src="javascript.js"></script>
 </body>

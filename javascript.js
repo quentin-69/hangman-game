@@ -3,7 +3,10 @@ let displayedWord = [];
 let wrongGuesses = [];
 let maxTries = 7;
 let triesLeft = maxTries;
-let gameOver = false;let words = [];
+let gameOver = false;
+let wins = 0; // Gewinnzähler
+let losses = 0; // Verlustzähler
+let points = 0; // Punktezähler
 
 const wordDisplay = document.getElementById('word-display');
 const wrongGuessesDisplay = document.getElementById('wrong-guesses');
@@ -12,6 +15,11 @@ const messageDisplay = document.getElementById('message');
 const letterInput = document.getElementById('letter-input');
 const submitButton = document.getElementById('submit-letter');
 const restartButton = document.getElementById('restart');
+
+// **Änderung: Anzeige für Gewinne und Verluste**
+const winCount = document.getElementById('win-count');
+const lossCount = document.getElementById('loss-count');
+const totalPoints = document.getElementById('total-points');
 
 submitButton.addEventListener('click', handleGuess);
 
@@ -40,6 +48,11 @@ function updateDisplay() {
     wrongGuessesDisplay.textContent = `Falsche Buchstaben: ${wrongGuesses.join(', ')}`;
     messageDisplay.textContent = gameOver ? (triesLeft === 0 ? "Verloren! Das Wort war: " + selectedWord : "Gewonnen!") : `Versuche übrig: ${triesLeft}`;
     drawHangman();
+
+    // **Anzeige der Punkte, Gewinne und Verluste**
+    winCount.textContent = `${wins}`;  // Nur die Zahl der Gewinne
+    lossCount.textContent = `${losses}`;  // Nur die Zahl der Verluste
+    totalPoints.textContent = `Punkte: ${points}`;
 }
 
 function handleGuess() {
@@ -60,6 +73,13 @@ function handleGuess() {
 
     if (displayedWord.join('') === selectedWord || triesLeft === 0) {
         gameOver = true;
+        if (triesLeft === 0) {
+            losses++; // Verluste zählen
+            points = Math.max(0, points - 5); // Punkte nicht unter 0 setzen
+        } else {
+            wins++; // Gewinne zählen
+            points += 10; // Punkte hinzufügen
+        }
     }
     updateDisplay();
 }
